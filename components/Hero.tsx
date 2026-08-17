@@ -1,27 +1,38 @@
 import { profile } from "@/lib/data";
+import TypeWriter from "@/components/TypeWriter";
 
 export default function Hero() {
   return (
-    <section className="mx-auto max-w-5xl px-4 py-24 sm:px-6 sm:py-32">
-      <p className="text-sm font-medium text-blue-600">Hi, I&apos;m {profile.name}</p>
-      <h1 className="mt-4 text-4xl font-semibold tracking-tight text-zinc-950 sm:text-5xl">
-        {profile.title}
+    <section
+      id="home"
+      className="relative mx-auto flex min-h-screen max-w-5xl scroll-mt-24 flex-col items-center justify-center px-6 py-32 text-center"
+    >
+      <h1 className="text-5xl font-semibold tracking-tight text-foreground sm:text-6xl md:text-9xl">
+        {profile.name.split('\n').map((line, i) => (
+          <span key={i}>
+            {i > 0 && <br />}
+            {line}
+          </span>
+        ))}.
       </h1>
-      <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">
+      <p className="mt-6 font-mono text-sm uppercase tracking-widest text-muted md:text-base">
         {profile.tagline}
       </p>
-      <div className="mt-10 flex flex-wrap gap-4">
+      <TypeWriter />
+      <div className="mt-12 flex flex-wrap items-center justify-center gap-10 font-mono text-sm">
         <a
-          href="#experience"
-          className="inline-flex h-11 items-center justify-center rounded-lg bg-zinc-950 px-6 text-sm font-medium text-white transition-colors hover:bg-zinc-800"
+          href="#about"
+          className="group inline-flex items-center gap-2 text-foreground transition-colors hover:text-accent"
         >
-          View experience
+          <span className="h-px w-6 bg-current opacity-40 transition-all duration-300 group-hover:w-12 group-hover:opacity-100" />
+          about
         </a>
         <a
           href="#contact"
-          className="inline-flex h-11 items-center justify-center rounded-lg border border-zinc-300 px-6 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-400 hover:text-zinc-950"
+          className="group inline-flex items-center gap-2 text-foreground transition-colors hover:text-accent"
         >
-          Get in touch
+          <span className="h-px w-6 bg-current opacity-40 transition-all duration-300 group-hover:w-12 group-hover:opacity-100" />
+          get in touch
         </a>
       </div>
     </section>

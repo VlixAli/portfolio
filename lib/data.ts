@@ -18,40 +18,40 @@ export type SkillGroup = {
 };
 
 export const profile = {
-  name: "Your Name",
-  title: "Backend Engineer",
-  tagline:
-    "Backend engineer with experience building and scaling travel, flight search, and reservation systems. Replace this with your own one-to-two sentence introduction.",
+  name: "Ali Eldiasty.\nI bring your ideas to reality!",
+  title: "Software Engineer",
+  tagline: "I am a software engineer with 2 years of experience building and scaling microservice-based systems across Java and spring boot - with a strong focus on AI agents, data platforms, and cloud infrastructure",
   about:
-    "Write a short paragraph about yourself here: your background, what you enjoy working on, and the kind of engineering problems you care about.\n\nAdd a second paragraph with more detail, such as experience with cloud platforms, APIs, and large-scale systems.",
-  email: "you@example.com",
-  linkedin: "https://www.linkedin.com/in/yourhandle",
-  github: "https://github.com/yourhandle",
+    "Backend Software Engineer with 2 years of experience building high-performance Java microservices using Spring Boot \
+and Quarkus. Experienced in cloud-native development on Azure and AWS, distributed messaging systems, Redis caching, \
+PostgreSQL, and large-scale airline booking integrations including Amadeus, Air Arabia, and Aegean. Passionate about \
+scalable backend architecture and performance optimization.",
+  email: "ali.m.eldiasty@gmail.com",
+  linkedin: "https://www.linkedin.com/in/ali-eldiasty-",
+  github: "https://github.com/VlixAli",
+  photo: "/1.jpeg",
 };
 
 export const experience: Experience[] = [
   {
-    company: "Air Arabia",
-    role: "Backend Engineer",
-    period: "Jan 2023 — Present",
-    summary:
-      "Describe your role here: the teams you worked with, the systems you built or maintained, and the impact you had.",
+    company: "Hilbertech",
+    role: "Software Engineer",
+    period: "July 2024 — Present",
+    summary: "Backend engineer building and scaling enterprise flight booking platforms.",
     highlights: [
-      "Key achievement or responsibility in bullet form",
-      "Another achievement, e.g. a system you designed or a metric you improved",
-      "A technology or integration you introduced",
+      "Developed backend services for Flight-Fusion and Dreamnfly, enterprise flight booking platforms used by travel agencies to search, book, and manage airline reservations.",
+      "Integrated multiple airline and payment providers including Amadeus, Air Arabia, Aegean Airlines, and Nexi using REST and SOAP APIs.",
+      "Deployed and maintained containerized applications on AWS and Azure using Docker and GitLab CI/CD pipelines.",
+      "Reduced container memory consumption from approximately 80% to 15% by migrating JVM deployments to Quarkus Native executables, significantly improving scalability and lowering infrastructure costs.",
     ],
   },
   {
-    company: "Amadeus",
-    role: "Software Engineer",
-    period: "Jun 2020 — Dec 2022",
-    summary:
-      "Describe your role here: the teams you worked with, the systems you built or maintained, and the impact you had.",
+    company: "Fawry",
+    role: "Back End Intern",
+    period: "July 2022 — Sep 2022",
+    summary: "Backend development internship focused on API development and sales management.",
     highlights: [
-      "Key achievement or responsibility in bullet form",
-      "Another achievement, e.g. a system you designed or a metric you improved",
-      "A technology or integration you introduced",
+      "Developed backend APIs using Java and Spring Boot as part of a sales management system internship project.",
     ],
   },
 ];
@@ -59,46 +59,63 @@ export const experience: Experience[] = [
 export const skills: SkillGroup[] = [
   {
     category: "Languages",
-    items: ["Java", "TypeScript", "SQL", "JavaScript"],
+    items: ["Java", "PHP", "C#", "JavaScript"],
   },
   {
-    category: "Backend",
+    category: "Frameworks & Technologies",
     items: [
-      "Spring Boot",
-      "Quarkus",
-      "REST APIs",
-      "Microservices",
-      "Kafka",
-      "Redis",
+      "Spring (Core, Boot, Security, Data),",
+      "Hibernate", 
+      "Quarkus", 
+      "JUnit", 
+      "Mockito", 
+      "Laravel", 
+      "Eloquent", 
+      "RESTful Services", 
+      "SOAP"
     ],
   },
   {
-    category: "Databases",
-    items: ["PostgreSQL", "MySQL", "MongoDB"],
+    category: "Messaging & Caching",
+    items: ["RabbitMQ", "Azure Service Bus", "Redis"],
   },
   {
-    category: "Cloud & DevOps",
-    items: ["Azure", "AWS", "Docker", "Kubernetes", "CI/CD", "Terraform"],
+    category: "Databases",
+    items: ["PostgreSQL", "MySQL"],
   },
+  {
+    category: "Cloud & infrastructure",
+    items: ["Azure", "AWS", "Docker", "GitLab CI", "Azure DevOps"],
+  },
+  {
+    category: "Testing & Tools",
+    items: ["JUnit", "Mockito", "Git", "GitHub", "GitLab", "Jira", "Maven", "Claude Code", "OpenCode"],
+  },
+  {
+    category: "Conceptual knowledge",
+    items: ["Algorithms", "Data Structures", "SOLID Principles", "Object Oriented Programming", "Database",
+ "designing concepts", "Object-relational mapping ORM", "Microservice", "Unit & Integration Testing", "CI/CD"],
+  }
 ];
 
 export const projects: Project[] = [
   {
-    title: "Flight Search Engine",
+    title: "Sales Management System",
     description:
-      "Describe this project: the problem it solves, your role, and what it achieved.",
-    tech: ["Java", "Spring Boot", "PostgreSQL"],
+      "Built a sales management system using Spring Boot, Spring Security, MySQL, JWT authentication, and JPA. \
+Implemented order and refund management, authentication, search functionality, and role-based authorization.",
+    tech: ["Java", "Spring Boot", "Spring Security", "Spring Data JPA", "MySQL", "JUnit", "Mockito", "JWT"],
   },
   {
-    title: "NDC Integration",
+    title: "Full Stack Mutli-Vendor E-Commerce website",
     description:
-      "Describe this project: the problem it solves, your role, and what it achieved.",
-    tech: ["Quarkus", "Kafka", "Redis"],
+      "Developed administrative and vendor dashboards for a multi-vendor e-commerce platform, facilitating product management, user oversight, and sales monitoring.",
+    tech: ["PHP", "Laravel", "Tailwind", "MySQL", "Bootstrap"],
   },
   {
-    title: "API Gateway",
+    title: "Travel Agency",
     description:
-      "Describe this project: the problem it solves, your role, and what it achieved.",
-    tech: ["Azure", "AWS", "Docker"],
+      "Implemented a role-based access control system within a travel agency API, enabling admins to create users, manage travels and tours, editors to modify travels, and users to view tours and travels with filtering capabilities.",
+    tech: ["PHP", "Laravel", "MySQL"],
   },
 ];

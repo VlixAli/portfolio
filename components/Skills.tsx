@@ -4,21 +4,20 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="mx-auto max-w-5xl scroll-mt-24 px-4 py-24 sm:px-6"
+      className="mx-auto max-w-5xl scroll-mt-24 border-t border-line px-6 py-24"
     >
-      <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500">
-        Skills
+      <h2 className="font-mono text-sm uppercase tracking-widest text-muted">
+        <span className="mr-3 text-accent">&#9657;</span>skills
       </h2>
-      <div className="mt-10 space-y-8">
+      <div className="mt-14 space-y-10">
         {skills.map((group) => (
           <div key={group.category}>
-            <h3 className="text-sm font-medium text-zinc-500">{group.category}</h3>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <h3 className="font-mono text-xs uppercase tracking-widest text-muted">
+              {group.category}
+            </h3>
+            <div className="mt-4 flex flex-wrap gap-x-8 gap-y-2">
               {group.items.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-sm text-zinc-700"
-                >
+                <span key={item} className="font-mono text-sm text-foreground/80">
                   {item}
                 </span>
               ))}

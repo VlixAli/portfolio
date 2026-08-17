@@ -4,39 +4,21 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="mx-auto max-w-5xl scroll-mt-24 px-4 py-24 sm:px-6"
+      className="mx-auto max-w-5xl scroll-mt-24 border-t border-line px-6 py-24 pb-32"
     >
-      <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500">
-        Contact
+      <h2 className="font-mono text-sm uppercase tracking-widest text-muted">
+        <span className="mr-3 text-accent">&#9657;</span>contact
       </h2>
-      <p className="mt-6 max-w-2xl text-base leading-7 text-zinc-700">
+      <p className="mt-14 max-w-xl leading-8 text-muted">
         I&apos;m always open to interesting conversations and opportunities.
         Feel free to reach out.
       </p>
-      <div className="mt-10 flex flex-wrap gap-4">
-        <a
-          href={`mailto:${profile.email}`}
-          className="inline-flex h-11 items-center justify-center rounded-lg bg-zinc-950 px-6 text-sm font-medium text-white transition-colors hover:bg-zinc-800"
-        >
-          Email me
-        </a>
-        <a
-          href={profile.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex h-11 items-center justify-center rounded-lg border border-zinc-300 px-6 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-400 hover:text-zinc-950"
-        >
-          LinkedIn
-        </a>
-        <a
-          href={profile.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex h-11 items-center justify-center rounded-lg border border-zinc-300 px-6 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-400 hover:text-zinc-950"
-        >
-          GitHub
-        </a>
-      </div>
+      <a
+        href={`mailto:${profile.email}`}
+        className="mt-10 inline-block font-mono text-xl tracking-tight text-foreground transition-colors hover:text-accent md:text-3xl"
+      >
+        {profile.email}
+      </a>
     </section>
   );
 }

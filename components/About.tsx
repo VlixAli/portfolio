@@ -1,17 +1,24 @@
+import Avatar from "@/components/Avatar";
 import { profile } from "@/lib/data";
 
 export default function About() {
   const paragraphs = profile.about.split("\n\n");
 
   return (
-    <section id="about" className="mx-auto max-w-5xl scroll-mt-24 px-4 py-24 sm:px-6">
-      <h2 className="text-sm font-semibold uppercase tracking-widest text-zinc-500">
-        About
+    <section
+      id="about"
+      className="mx-auto max-w-5xl scroll-mt-24 border-t border-line px-6 py-24"
+    >
+      <h2 className="font-mono text-sm uppercase tracking-widest text-muted">
+        <span className="mr-3 text-accent">&#9657;</span>about
       </h2>
-      <div className="mt-6 max-w-3xl space-y-4 text-base leading-7 text-zinc-700">
-        {paragraphs.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
+      <div className="mt-14 flex flex-col items-start gap-10 md:flex-row md:gap-16">
+        <Avatar />
+        <div className="max-w-2xl space-y-4 text-base leading-7 text-foreground/75">
+          {paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
       </div>
     </section>
   );
