@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
-import { profile } from "@/lib/data";
+import { profile, siteUrl } from "@/lib/data";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,16 +14,53 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: `${profile.name} | ${profile.title}`,
   description: profile.tagline,
+  keywords: [
+    profile.name,
+    profile.title,
+    "Backend Engineer",
+    "Java",
+    "Spring Boot",
+    "Quarkus",
+    "Microservices",
+    "AWS",
+    "Azure",
+  ],
+  authors: [{ name: profile.name, url: siteUrl }],
+  creator: profile.name,
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: `${profile.name} | ${profile.title}`,
+    title: `${profile.name} | ${profile.title}`,
+    description: profile.slogan,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${profile.name} | ${profile.title}`,
+    description: profile.slogan,
+  },
 };
+
+const splashScript =
+  '(function(){try{if(sessionStorage.getItem("splash-seen")){document.documentElement.setAttribute("data-splash","off")}}catch(e){}})()';
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
       className={`${inter.variable} ${robotoMono.variable} dark scroll-smooth`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: splashScript }} />
+        <noscript>
+          <style>{`.reveal{opacity:1 !important}`}</style>
+        </noscript>
+      </head>
       <body className="min-h-full flex flex-col bg-background font-sans text-foreground antialiased">
         {children}
       </body>

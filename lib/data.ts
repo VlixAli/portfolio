@@ -10,6 +10,10 @@ export type Project = {
   title: string;
   description: string;
   tech: string[];
+  links?: {
+    github?: string;
+    live?: string;
+  };
 };
 
 export type SkillGroup = {
@@ -17,10 +21,14 @@ export type SkillGroup = {
   items: string[];
 };
 
+export const siteUrl = "https://ali-eldiasty-portfolio.vercel.app";
+
 export const profile = {
-  name: "Ali Eldiasty.\nI bring your ideas to reality!",
+  name: "Ali Eldiasty",
+  slogan: "I bring your ideas to reality!",
   title: "Software Engineer",
-  tagline: "I am a software engineer with 2 years of experience building and scaling microservice-based systems across Java and spring boot - with a strong focus on AI agents, data platforms, and cloud infrastructure",
+  tagline:
+    "Backend software engineer with 2 years of experience building and scaling microservice-based systems across Java and Spring Boot, with a strong focus on AI agents, data platforms, and cloud infrastructure.",
   about:
     "Backend Software Engineer with 2 years of experience building high-performance Java microservices using Spring Boot \
 and Quarkus. Experienced in cloud-native development on Azure and AWS, distributed messaging systems, Redis caching, \
@@ -41,8 +49,8 @@ export const experience: Experience[] = [
     highlights: [
       "Developed backend services for Flight-Fusion and Dreamnfly, enterprise flight booking platforms used by travel agencies to search, book, and manage airline reservations.",
       "Integrated multiple airline and payment providers including Amadeus, Air Arabia, Aegean Airlines, and Nexi using REST and SOAP APIs.",
-      "Deployed and maintained containerized applications on AWS and Azure using Docker and GitLab CI/CD pipelines.",
-      "Reduced container memory consumption from approximately 80% to 15% by migrating JVM deployments to Quarkus Native executables, significantly improving scalability and lowering infrastructure costs.",
+      "Containerized and deployed Java/Quarkus microservices across AWS and Azure using Docker and GitLab CI/CD.",
+      "Reduced container memory utilization from ~80% to ~15% by migrating JVM deployments to Quarkus Native, improving scalability and reducing infrastructure costs.",
     ],
   },
   {
@@ -58,44 +66,37 @@ export const experience: Experience[] = [
 
 export const skills: SkillGroup[] = [
   {
-    category: "Languages",
+    category: "Programming Languages",
     items: ["Java", "PHP", "C#", "JavaScript"],
   },
   {
-    category: "Frameworks & Technologies",
+    category: "Frameworks & Technology",
     items: [
-      "Spring (Core, Boot, Security, Data),",
-      "Hibernate", 
-      "Quarkus", 
-      "JUnit", 
-      "Mockito", 
-      "Laravel", 
-      "Eloquent", 
-      "RESTful Services", 
-      "SOAP"
+      "Spring Boot",
+      "Hibernate",
+      "Quarkus",
+      "Laravel",
+      "Eloquent",
+      "RESTful Services",
+      "SOAP",
     ],
   },
   {
-    category: "Messaging & Caching",
-    items: ["RabbitMQ", "Azure Service Bus", "Redis"],
+    category: "Messaging & DevOps",
+    items: ["RabbitMQ", "Azure Service Bus", "Docker", "Kubernetes", "GitLab CI/CD"],
   },
   {
     category: "Databases",
-    items: ["PostgreSQL", "MySQL"],
+    items: ["MySQL", "PostgreSQL", "Redis"],
   },
   {
-    category: "Cloud & infrastructure",
-    items: ["Azure", "AWS", "Docker", "GitLab CI", "Azure DevOps"],
+    category: "Cloud & Platform",
+    items: ["AWS", "Azure", "Linux", "Windows"],
   },
   {
     category: "Testing & Tools",
-    items: ["JUnit", "Mockito", "Git", "GitHub", "GitLab", "Jira", "Maven", "Claude Code", "OpenCode"],
+    items: ["JUnit", "Mockito", "Git", "GitHub", "GitLab", "Azure DevOps", "Jira", "Maven", "Claude Code", "OpenCode"],
   },
-  {
-    category: "Conceptual knowledge",
-    items: ["Algorithms", "Data Structures", "SOLID Principles", "Object Oriented Programming", "Database",
- "designing concepts", "Object-relational mapping ORM", "Microservice", "Unit & Integration Testing", "CI/CD"],
-  }
 ];
 
 export const projects: Project[] = [
@@ -107,7 +108,7 @@ Implemented order and refund management, authentication, search functionality, a
     tech: ["Java", "Spring Boot", "Spring Security", "Spring Data JPA", "MySQL", "JUnit", "Mockito", "JWT"],
   },
   {
-    title: "Full Stack Mutli-Vendor E-Commerce website",
+    title: "Full Stack Multi-Vendor E-Commerce Website",
     description:
       "Developed administrative and vendor dashboards for a multi-vendor e-commerce platform, facilitating product management, user oversight, and sales monitoring.",
     tech: ["PHP", "Laravel", "Tailwind", "MySQL", "Bootstrap"],
