@@ -8,6 +8,7 @@ import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import SocialRail from "@/components/SocialRail";
 import EmailRail from "@/components/EmailRail";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
         <Projects />
         <Contact />
       </main>
+      <Footer />
     </Splash>
   );
 }

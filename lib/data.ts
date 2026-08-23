@@ -10,6 +10,10 @@ export type Project = {
   title: string;
   description: string;
   tech: string[];
+  links?: {
+    github?: string;
+    live?: string;
+  };
 };
 
 export type SkillGroup = {

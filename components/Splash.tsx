@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
 const SPLASH_KEY = "splash-seen";
-const SPLASH_DURATION = 2800;
+const SPLASH_DURATION = 1800;
 
 export default function Splash({ children }: { children: ReactNode }) {
   const [hidden, setHidden] = useState(false);

@@ -112,7 +112,7 @@ export default function TypeWriter() {
               {i + 1}
             </span>
             <span>
-              <span className="text-[#c792ea]">{line.slice(0, 6)}</span>
+              <span className="text-accent">{line.slice(0, 6)}</span>
               <span className="text-foreground">
                 {line.slice(6, cursorLine === i ? cursorChar + 1 : undefined)}
               </span>
