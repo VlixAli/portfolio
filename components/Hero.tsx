@@ -8,14 +8,12 @@ export default function Hero() {
       className="relative mx-auto flex min-h-screen max-w-5xl scroll-mt-24 flex-col items-center justify-center px-6 py-32 text-center"
     >
       <h1 className="text-5xl font-semibold tracking-tight text-foreground sm:text-6xl md:text-9xl">
-        {profile.name.split('\n').map((line, i) => (
-          <span key={i}>
-            {i > 0 && <br />}
-            {line}
-          </span>
-        ))}.
+        {profile.name}.
       </h1>
-      <p className="mt-6 font-mono text-sm uppercase tracking-widest text-muted md:text-base">
+      <p className="mt-6 text-2xl font-medium tracking-tight text-muted sm:text-3xl md:text-4xl">
+        {profile.slogan}
+      </p>
+      <p className="mt-6 max-w-2xl font-mono text-sm uppercase leading-relaxed tracking-widest text-muted md:text-base">
         {profile.tagline}
       </p>
       <TypeWriter />

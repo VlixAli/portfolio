@@ -20,35 +20,36 @@ export default function Navbar() {
           aria-label="Home"
           className="text-foreground transition-colors hover:text-accent"
         >
-<svg
-  width="8rem"
-  height="2rem"
-  viewBox="0 0 400 171"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
-  className="h-7 w-auto"
->
-  {/* A */}
-  <path
-    d="M2 169.5L70 1H112L180 169.5H132L120 139.5H62L50 169.5H2ZM75 105H107L91 63L75 105Z"
-    stroke="currentColor"
-    strokeWidth="2"
-  />
+          <svg
+            width="8rem"
+            height="2rem"
+            viewBox="0 0 400 171"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-7 w-auto"
+            aria-hidden="true"
+          >
+            {/* A */}
+            <path
+              d="M2 169.5L70 1H112L180 169.5H132L120 139.5H62L50 169.5H2ZM75 105H107L91 63L75 105Z"
+              stroke="currentColor"
+              strokeWidth="2"
+            />
 
-  {/* L */}
-  <path
-    d="M195 1H241.5V127H315V169.5H195V1Z"
-    stroke="currentColor"
-    strokeWidth="2"
-  />
+            {/* L */}
+            <path
+              d="M195 1H241.5V127H315V169.5H195V1Z"
+              stroke="currentColor"
+              strokeWidth="2"
+            />
 
-  {/* I */}
-  <path
-    d="M335 1H381.5V169.5H335V1Z"
-    stroke="currentColor"
-    strokeWidth="2"
-  />
-</svg>
+            {/* I */}
+            <path
+              d="M335 1H381.5V169.5H335V1Z"
+              stroke="currentColor"
+              strokeWidth="2"
+            />
+          </svg>
         </a>
 
         {/* Desktop nav links */}
@@ -79,6 +80,8 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setOpen(!open)}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
           aria-label="Toggle menu"
           className="flex h-10 w-10 items-center justify-center md:hidden"
         >
@@ -100,7 +103,10 @@ export default function Navbar() {
 
       {/* Mobile dropdown */}
       {open && (
-        <div className="border-t border-line bg-background/95 backdrop-blur-xl md:hidden">
+        <div
+          id="mobile-menu"
+          className="border-t border-line bg-background/95 backdrop-blur-xl md:hidden"
+        >
           <ul className="flex flex-col items-center gap-1 py-4">
             {navLinks.map((link) => (
               <li key={link.href} className="w-full text-center">

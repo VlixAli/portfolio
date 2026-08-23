@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 const lines = [
   'const Ali = (name, passion) => {',
@@ -12,94 +12,117 @@ const TYPING_SPEED = 70;
 const DELETING_SPEED = 40;
 const PAUSE_AFTER_TYPE = 2000;
 const PAUSE_AFTER_DELETE = 500;
+const LINE_PAUSE = 200;
+const DELETE_LINE_PAUSE = 100;
 
 export default function TypeWriter() {
   const [displayedLines, setDisplayedLines] = useState<string[]>([""]);
-  const [lineIndex, setLineIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [cursorLine, setCursorLine] = useState(0);
+  const [cursorChar, setCursorChar] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const tick = useCallback(() => {
-    if (isPaused) return;
+  useEffect(() => {
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout>;
 
-    const currentLine = lines[lineIndex];
+    const setLine = (index: number, value: string) => {
+      setDisplayedLines((prev) => {
+        const next = [...prev];
+        if (index >= next.length) next.push("");
+        next[index] = value;
+        return next;
+      });
+    };
 
-    if (!isDeleting) {
-      if (charIndex < currentLine.length) {
-        setDisplayedLines((prev) => {
-          const next = [...prev];
-          next[lineIndex] = currentLine.slice(0, charIndex + 1);
-          return next;
-        });
-        setCharIndex((c) => c + 1);
-      } else {
-        if (lineIndex < lines.length - 1) {
-          setIsPaused(true);
-          setTimeout(() => {
-            setLineIndex((l) => l + 1);
-            setCharIndex(0);
+    const step = (line: number, char: number, deleting: boolean) => {
+      if (cancelled) return;
+
+      const text = lines[line];
+
+      if (!deleting && char < text.length) {
+        const next = char + 1;
+        setCursorChar(next);
+        setLine(line, text.slice(0, next));
+        timer = setTimeout(() => step(line, next, false), TYPING_SPEED);
+        return;
+      }
+
+      if (!deleting) {
+        setIsPaused(true);
+        if (line < lines.length - 1) {
+          timer = setTimeout(() => {
+            if (cancelled) return;
             setIsPaused(false);
-          }, 200);
+            setCursorLine(line + 1);
+            setCursorChar(0);
+            step(line + 1, 0, false);
+          }, LINE_PAUSE);
         } else {
-          setIsPaused(true);
-          setTimeout(() => {
-            setIsDeleting(true);
+          timer = setTimeout(() => {
+            if (cancelled) return;
             setIsPaused(false);
+            step(line, char, true);
           }, PAUSE_AFTER_TYPE);
         }
+        return;
       }
-    } else {
-      if (charIndex > 0) {
-        setDisplayedLines((prev) => {
-          const next = [...prev];
-          next[lineIndex] = currentLine.slice(0, charIndex - 1);
-          return next;
-        });
-        setCharIndex((c) => c - 1);
-      } else {
-        if (lineIndex > 0) {
-          setIsPaused(true);
-          setTimeout(() => {
-            setLineIndex((l) => l - 1);
-            setCharIndex(lines[lineIndex - 1].length);
-            setIsPaused(false);
-          }, 100);
-        } else {
-          setIsPaused(true);
-          setTimeout(() => {
-            setIsDeleting(false);
-            setIsPaused(false);
-          }, PAUSE_AFTER_DELETE);
-        }
-      }
-    }
-  }, [lineIndex, charIndex, isDeleting, isPaused]);
 
-  useEffect(() => {
-    const speed = isDeleting ? DELETING_SPEED : TYPING_SPEED;
-    const timer = setTimeout(tick, speed);
-    return () => clearTimeout(timer);
-  }, [tick, isDeleting]);
+      if (char > 0) {
+        const next = char - 1;
+        setCursorChar(next);
+        setLine(line, text.slice(0, next));
+        timer = setTimeout(() => step(line, next, true), DELETING_SPEED);
+        return;
+      }
+
+      setIsPaused(true);
+      if (line > 0) {
+        timer = setTimeout(() => {
+          if (cancelled) return;
+          setIsPaused(false);
+          const prevLine = line - 1;
+          setCursorLine(prevLine);
+          setCursorChar(lines[prevLine].length);
+          step(prevLine, lines[prevLine].length, true);
+        }, DELETE_LINE_PAUSE);
+      } else {
+        timer = setTimeout(() => {
+          if (cancelled) return;
+          setIsPaused(false);
+          step(0, 0, false);
+        }, PAUSE_AFTER_DELETE);
+      }
+    };
+
+    step(0, 0, false);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <div className="mt-8 font-mono text-xs sm:text-sm text-muted/80">
-      {displayedLines.map((line, i) => (
-        <div key={i} className="flex">
-          <span className="w-8 select-none text-right text-muted/40 mr-3">
-            {i + 1}
-          </span>
-          <span>
-            <span className="text-[#c792ea]">{line.slice(0, 6)}</span>
-            <span className="text-foreground">
-              {line.slice(6, lineIndex === i ? charIndex + 1 : undefined)}
+      <span className="sr-only">{`Ali builds with passion.`}</span>
+      <div aria-hidden="true">
+        {displayedLines.map((line, i) => (
+          <div key={i} className="flex">
+            <span className="w-8 select-none text-right text-muted/40 mr-3">
+              {i + 1}
             </span>
-          </span>
-          {i === lineIndex && !isPaused && (
-            <span className="ml-0.5 inline-block h-4 w-1.5 animate-pulse bg-foreground/70" />
-          )}
-        </div>
-      ))}
+            <span>
+              <span className="text-[#c792ea]">{line.slice(0, 6)}</span>
+              <span className="text-foreground">
+                {line.slice(6, cursorLine === i ? cursorChar + 1 : undefined)}
+              </span>
+            </span>
+            {i === cursorLine && !isPaused && (
+              <span className="ml-0.5 inline-block h-4 w-1.5 animate-pulse bg-foreground/70" />
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -25,6 +25,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html[data-splash="off"] .splash-overlay {
+  display: none;
+}
+
 body {
   background: #000000;
   color: #f5f5f7;
