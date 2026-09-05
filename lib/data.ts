@@ -106,17 +106,26 @@ export const projects: Project[] = [
       "Built a sales management system using Spring Boot, Spring Security, MySQL, JWT authentication, and JPA. \
 Implemented order and refund management, authentication, search functionality, and role-based authorization.",
     tech: ["Java", "Spring Boot", "Spring Security", "Spring Data JPA", "MySQL", "JUnit", "Mockito", "JWT"],
+    links: {
+      github: "https://github.com/VlixAli/Sales-Management-System",
+    },
   },
   {
     title: "Full Stack Multi-Vendor E-Commerce Website",
     description:
       "Developed administrative and vendor dashboards for a multi-vendor e-commerce platform, facilitating product management, user oversight, and sales monitoring.",
     tech: ["PHP", "Laravel", "Tailwind", "MySQL", "Bootstrap"],
+    links: {
+      github: "https://github.com/VlixAli/Mutli-vendor-E-Commerce",
+    },
   },
   {
     title: "Travel Agency",
     description:
       "Implemented a role-based access control system within a travel agency API, enabling admins to create users, manage travels and tours, editors to modify travels, and users to view tours and travels with filtering capabilities.",
     tech: ["PHP", "Laravel", "MySQL"],
+    links: {
+      github: "https://github.com/VlixAli/Travel-Agency-Api",
+    },
   },
 ];

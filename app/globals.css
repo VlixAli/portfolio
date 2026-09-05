@@ -170,19 +170,19 @@ body::before {
 }
 
 .animate-splash-title {
-  animation: splash-title 1.6s ease-out forwards;
+  animation: splash-title 1s ease-out forwards;
 }
 
 .animate-fade-left {
-  animation: fade-left 1.6s ease-in-out forwards;
+  animation: fade-left 1s ease-in-out forwards;
 }
 
 .animate-fade-right {
-  animation: fade-right 1.6s ease-in-out forwards;
+  animation: fade-right 1s ease-in-out forwards;
 }
 
 .animate-fade-in {
-  animation: fade-in 1.6s ease-in-out forwards;
+  animation: fade-in 1s ease-in-out forwards;
 }
 
 .animate-glow {
