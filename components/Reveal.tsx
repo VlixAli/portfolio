@@ -7,15 +7,18 @@ export default function Reveal({
   children,
   delay = 0,
   className = "",
+  start = true,
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
+  start?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (!start) return;
     const node = ref.current;
     if (!node) return;
 
@@ -36,7 +39,7 @@ export default function Reveal({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [start]);
 
   const style =
     delay > 0 ? ({ "--reveal-delay": `${delay}ms` } as CSSProperties) : undefined;

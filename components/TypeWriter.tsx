@@ -15,13 +15,14 @@ const PAUSE_AFTER_DELETE = 500;
 const LINE_PAUSE = 200;
 const DELETE_LINE_PAUSE = 100;
 
-export default function TypeWriter() {
+export default function TypeWriter({ start = true }: { start?: boolean }) {
   const [displayedLines, setDisplayedLines] = useState<string[]>([""]);
   const [cursorLine, setCursorLine] = useState(0);
   const [cursorChar, setCursorChar] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
+    if (!start) return;
     let cancelled = false;
     let timer: ReturnType<typeof setTimeout>;
 
@@ -100,7 +101,7 @@ export default function TypeWriter() {
       cancelled = true;
       clearTimeout(timer);
     };
-  }, []);
+  }, [start]);
 
   return (
     <div className="mt-8 font-mono text-xs sm:text-sm text-muted/80">

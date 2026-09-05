@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Splash from "@/components/Splash";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -11,13 +14,15 @@ import EmailRail from "@/components/EmailRail";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  const [splashDone, setSplashDone] = useState(false);
+
   return (
-    <Splash>
+    <Splash onDone={() => setSplashDone(true)}>
       <Navbar />
       <SocialRail />
       <EmailRail />
       <main className="flex-1">
-        <Hero />
+        <Hero start={splashDone} />
         <About />
         <Experience />
         <Skills />

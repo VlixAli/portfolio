@@ -2,31 +2,31 @@ import { profile } from "@/lib/data";
 import TypeWriter from "@/components/TypeWriter";
 import Reveal from "@/components/Reveal";
 
-export default function Hero() {
+export default function Hero({ start = true }: { start?: boolean }) {
   return (
     <section
       id="home"
       className="relative mx-auto flex min-h-screen max-w-5xl scroll-mt-24 flex-col items-center justify-center px-6 py-32 text-center"
     >
-      <Reveal>
+      <Reveal start={start}>
         <h1 className="text-5xl font-semibold tracking-tight text-foreground sm:text-6xl md:text-9xl">
           {profile.name}.
         </h1>
       </Reveal>
-      <Reveal delay={120}>
+      <Reveal start={start} delay={120}>
         <p className="mt-6 text-2xl font-medium tracking-tight text-muted sm:text-3xl md:text-4xl">
           {profile.slogan}
         </p>
       </Reveal>
-      <Reveal delay={240}>
+      <Reveal start={start} delay={240}>
         <p className="mx-auto mt-6 max-w-2xl font-mono text-sm uppercase leading-relaxed tracking-widest text-muted md:text-base">
           {profile.tagline}
         </p>
       </Reveal>
-      <Reveal delay={360}>
-        <TypeWriter />
+      <Reveal start={start} delay={360}>
+        <TypeWriter start={start} />
       </Reveal>
-      <Reveal delay={480}>
+      <Reveal start={start} delay={480}>
         <div className="mt-12 flex flex-wrap items-center justify-center gap-10 font-mono text-sm">
           <a
             href="#about"
