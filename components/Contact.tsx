@@ -17,12 +17,41 @@ export default function Contact() {
           I&apos;m always open to interesting conversations and opportunities.
           Feel free to reach out.
         </p>
-        <a
-          href={`mailto:${profile.email}`}
-          className="mt-10 inline-block font-mono text-xl tracking-tight text-foreground transition-colors hover:text-accent md:text-3xl"
-        >
-          {profile.email}
-        </a>
+        <div className="mt-10 flex flex-col gap-4">
+          <a
+            href={`mailto:${profile.email}`}
+            className="inline-block font-mono text-xl tracking-tight text-foreground transition-colors hover:text-accent md:text-3xl"
+          >
+            {profile.email}
+          </a>
+          <a
+            href={`tel:${profile.phone.replace(/\s/g, "")}`}
+            className="inline-block w-fit font-mono text-base tracking-tight text-muted transition-colors hover:text-accent md:text-xl"
+          >
+            {profile.phone}
+          </a>
+          <p className="font-mono text-sm tracking-wide text-muted">
+            {profile.location}
+          </p>
+          <div className="flex flex-wrap gap-6 font-mono text-sm">
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted transition-colors hover:text-accent"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted transition-colors hover:text-accent"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
       </Reveal>
     </section>
   );

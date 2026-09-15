@@ -2,6 +2,7 @@ export type Experience = {
   company: string;
   role: string;
   period: string;
+  location?: string;
   summary: string;
   highlights: string[];
 };
@@ -26,16 +27,18 @@ export const siteUrl = "https://ali-eldiasty-portfolio.vercel.app";
 export const profile = {
   name: "Ali Eldiasty",
   slogan: "I bring your ideas to reality!",
-  title: "Software Engineer",
+  title: "Backend Software Engineer",
   tagline:
-    "Backend software engineer with 2 years of experience building and scaling microservice-based systems across Java and Spring Boot, with a strong focus on AI agents, data platforms, and cloud infrastructure.",
+    "Backend Software Engineer with 2+ years of experience building Java microservices with Spring Boot and Quarkus, focused on scalability, reliability, and performance.",
   about:
-    "Backend Software Engineer with 2 years of experience building high-performance Java microservices using Spring Boot \
-and Quarkus. Experienced in cloud-native development on Azure and AWS, distributed messaging systems, Redis caching, \
-PostgreSQL, and large-scale airline booking integrations including Amadeus, Air Arabia, and Aegean. Passionate about \
-scalable backend architecture and performance optimization.",
+    "Backend Software Engineer with 2+ years of experience building Java microservices with Spring Boot and Quarkus. \
+Experienced in distributed systems, asynchronous messaging, Redis caching, PostgreSQL, Docker, and AWS/Azure cloud \
+environments. Built and integrated airline booking systems with Amadeus, Air Arabia, and Aegean, with a focus on \
+scalability, reliability, and performance.",
   email: "ali.m.eldiasty@gmail.com",
-  linkedin: "https://www.linkedin.com/in/ali-eldiasty-",
+  phone: "+201280600741",
+  location: "Cairo, Egypt",
+  linkedin: "https://www.linkedin.com/in/ali-eldiasty",
   github: "https://github.com/VlixAli",
   photo: "/1.jpeg",
 };
@@ -43,8 +46,19 @@ scalable backend architecture and performance optimization.",
 export const experience: Experience[] = [
   {
     company: "Hilbertech",
+    role: "Mid Level Software Engineer",
+    period: "08/2026 — Present",
+    location: "(Remote), Italy",
+    summary: "Backend engineer improving data consistency and reliability under parallel processing.",
+    highlights: [
+      "Resolved a concurrency issue where multiple microservices simultaneously updated shared Redis-cached responses, improving data consistency and reliability under parallel processing.",
+    ],
+  },
+  {
+    company: "Hilbertech",
     role: "Software Engineer",
-    period: "July 2024 — Present",
+    period: "07/2024 — 08/2026",
+    location: "(Remote), Italy",
     summary: "Backend engineer building and scaling enterprise flight booking platforms.",
     highlights: [
       "Developed backend services for Flight-Fusion and Dreamnfly, enterprise flight booking platforms used by travel agencies to search, book, and manage airline reservations.",
@@ -56,7 +70,8 @@ export const experience: Experience[] = [
   {
     company: "Fawry",
     role: "Back End Intern",
-    period: "July 2022 — Sep 2022",
+    period: "07/2022 — 09/2022",
+    location: "Cairo, Egypt",
     summary: "Backend development internship focused on API development and sales management.",
     highlights: [
       "Developed backend APIs using Java and Spring Boot as part of a sales management system internship project.",

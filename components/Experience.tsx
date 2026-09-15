@@ -15,7 +15,7 @@ export default function Experience() {
       <Reveal delay={120}>
         <ol className="mt-14 space-y-16">
           {experience.map((job) => (
-            <li key={job.company}>
+            <li key={`${job.company}-${job.role}-${job.period}`}>
               <div className="flex flex-col gap-4 md:flex-row md:gap-12">
                 <p className="shrink-0 pt-1 font-mono text-xs tracking-widest text-muted md:w-44">
                   {job.period}
@@ -24,7 +24,10 @@ export default function Experience() {
                   <h3 className="text-2xl font-semibold text-foreground">
                     {job.role}
                   </h3>
-                  <p className="mt-1 text-muted">{job.company}</p>
+                  <p className="mt-1 text-muted">
+                    {job.company}
+                    {job.location ? ` — ${job.location}` : ""}
+                  </p>
                   <p className="mt-5 leading-7 text-foreground/75">
                     {job.summary}
                   </p>
