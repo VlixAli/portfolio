@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Reveal from "@/components/Reveal";
-import { ExternalLinkIcon, GithubIcon, StarIcon } from "@/components/icons";
-import { profile } from "@/lib/data";
+import { ExternalLinkIcon, GithubIcon } from "@/components/icons";
+import { profile, projects } from "@/lib/data";
 
 type GitHubUser = {
   login: string;
@@ -146,11 +146,6 @@ export default function GitHubStats() {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5);
   const languageTotal = languages.reduce((sum, [, count]) => sum + count, 0) || 1;
-
-  const featuredRepos = repos
-    .filter((repo) => !repo.fork && !repo.archived)
-    .sort((a, b) => b.stargazers_count - a.stargazers_count || b.name.localeCompare(a.name))
-    .slice(0, 6);
 
   return (
     <section id="github" className="bg-black py-20 text-white">
@@ -316,33 +311,32 @@ export default function GitHubStats() {
               <h3 className="mt-14 text-2xl font-bold">Featured Repositories</h3>
             </Reveal>
             <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {featuredRepos.map((repo, index) => (
-                <Reveal key={repo.name} delay={(index % 3) * 100} className="h-full">
+              {projects.map((project, index) => (
+                <Reveal key={project.title} delay={(index % 3) * 100} className="h-full">
                   <a
-                    href={repo.html_url}
+                    href={project.links?.github ?? profile.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex h-full flex-col rounded-xl border border-zinc-800 bg-zinc-900/60 p-6 transition-all hover:-translate-y-1 hover:border-brand-400/40"
                   >
-                    <h4 className="text-base font-semibold text-brand-400">{repo.name}</h4>
+                    <h4 className="text-base font-semibold text-brand-400">{project.title}</h4>
                     <p className="mt-2 flex-1 text-sm leading-6 text-zinc-400">
-                      {repo.description ?? "No description provided."}
+                      {project.description}
                     </p>
-                    <div className="mt-4 flex items-center gap-4 text-xs text-zinc-500">
-                      {repo.language && (
-                        <span className="flex items-center gap-1.5">
-                          <span
-                            className="h-2.5 w-2.5 rounded-full"
-                            style={{ backgroundColor: LANGUAGE_COLORS[repo.language] ?? "#a1a1aa" }}
-                          />
-                          {repo.language}
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-md bg-zinc-800 px-2.5 py-1 text-xs font-medium text-zinc-300"
+                        >
+                          {tech}
                         </span>
-                      )}
-                      <span className="flex items-center gap-1.5">
-                        <StarIcon className="h-3.5 w-3.5" />
-                        {repo.stargazers_count}
-                      </span>
+                      ))}
                     </div>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400">
+                      View repository
+                      <ExternalLinkIcon className="h-4 w-4" />
+                    </span>
                   </a>
                 </Reveal>
               ))}
