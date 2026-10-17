@@ -28,6 +28,7 @@ export const profile = {
   name: "Ali Eldiasty",
   slogan: "I bring your ideas to reality!",
   title: "Backend Software Engineer",
+  heroLine: "Backend Engineer ▪ Microservices ▪ Cloud",
   tagline:
     "Backend Software Engineer with 2+ years of experience building Java microservices with Spring Boot and Quarkus, focused on scalability, reliability, and performance.",
   about:
@@ -38,9 +39,11 @@ scalability, reliability, and performance.",
   email: "ali.m.eldiasty@gmail.com",
   phone: "+201280600741",
   location: "Cairo, Egypt",
+  availability: "Open to opportunities",
   linkedin: "https://www.linkedin.com/in/ali-eldiasty",
   github: "https://github.com/VlixAli",
-  photo: "/1.jpeg",
+  githubUser: "VlixAli",
+  photo: "/1.png",
 };
 
 export const experience: Experience[] = [

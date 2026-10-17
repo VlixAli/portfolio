@@ -1,84 +1,93 @@
 import Reveal from "@/components/Reveal";
 import { ExternalLinkIcon, GithubIcon } from "@/components/icons";
-import { projects } from "@/lib/data";
+import { profile, projects } from "@/lib/data";
 
 export default function Projects() {
   return (
-    <section
-      id="projects"
-      className="mx-auto max-w-5xl scroll-mt-24 border-t border-line px-6 py-24"
-    >
-      <Reveal>
-        <h2 className="font-mono text-sm uppercase tracking-widest text-muted">
-          <span className="mr-3 text-accent">&#9657;</span>projects
-        </h2>
-      </Reveal>
-      <div className="mt-14 grid gap-6 md:grid-cols-2">
-        {projects.map((project, index) => {
-          const href = project.links?.github ?? project.links?.live;
-          return (
-          <Reveal key={project.title} delay={(index % 2) * 120} className="h-full">
-            <article className="group relative flex h-full flex-col rounded-lg border border-line bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 focus-within:border-accent/60 has-[a:focus-visible]:outline has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-accent">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs tracking-widest text-muted">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                {(project.links?.github || project.links?.live) && (
-                  <div className="relative z-10 flex items-center gap-3 text-muted">
-                    {project.links?.github && (
-                      <a
-                        href={project.links.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${project.title} on GitHub`}
-                        className="rounded transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                      >
-                        <GithubIcon className="h-[18px] w-[18px]" />
-                      </a>
-                    )}
-                    {project.links?.live && (
-                      <a
-                        href={project.links.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${project.title} live site`}
-                        className="rounded transition-colors hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                      >
-                        <ExternalLinkIcon className="h-[18px] w-[18px]" />
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
-              <h3 className="mt-4 text-xl font-semibold text-foreground transition-colors group-hover:text-accent">
-                {href ? (
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${project.title} — open GitHub repository`}
-                    className="rounded after:absolute after:inset-0 after:rounded-lg after:content-[''] focus-visible:outline-none"
-                  >
-                    {project.title}
-                  </a>
-                ) : (
-                  project.title
-                )}
-              </h3>
-              <p className="mt-3 leading-7 text-muted">{project.description}</p>
-              <div className="mt-auto pt-6">
-                <div className="flex flex-wrap gap-x-5 gap-y-1.5">
+    <section id="projects" className="bg-zinc-50 py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Reveal>
+          <p className="text-sm font-semibold uppercase tracking-widest text-brand-600">
+            Projects
+          </p>
+        </Reveal>
+        <Reveal delay={100}>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+            Featured Projects
+          </h2>
+        </Reveal>
+        <Reveal delay={200}>
+          <p className="mt-5 max-w-2xl leading-7 text-muted">
+            Things I&apos;ve built with Spring Boot, Laravel, and everything in
+            between — from enterprise sales systems to full e-commerce
+            platforms.
+          </p>
+        </Reveal>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {projects.map((project, index) => (
+            <Reveal key={project.title} delay={index * 120} className="h-full">
+              <article className="flex h-full flex-col rounded-xl border border-line bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-lg">
+                <div className="flex items-center justify-between">
+                  <span className="rounded-md bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700">
+                    0{index + 1}
+                  </span>
+                  {project.links?.github && (
+                    <a
+                      href={project.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${project.title} on GitHub`}
+                      className="text-zinc-400 transition-colors hover:text-brand-600"
+                    >
+                      <GithubIcon className="h-5 w-5" />
+                    </a>
+                  )}
+                </div>
+                <h3 className="mt-4 text-lg font-bold leading-snug text-zinc-900">
+                  {project.title}
+                </h3>
+                <p className="mt-3 flex-1 text-sm leading-6 text-muted">
+                  {project.description}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
-                    <span key={tech} className="font-mono text-xs text-muted">
+                    <span
+                      key={tech}
+                      className="rounded-md bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-600"
+                    >
                       {tech}
                     </span>
                   ))}
                 </div>
-              </div>
-            </article>
-          </Reveal>
-          );
-        })}
+                {project.links?.github && (
+                  <a
+                    href={project.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:underline"
+                  >
+                    View on GitHub
+                    <ExternalLinkIcon className="h-4 w-4" />
+                  </a>
+                )}
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={200}>
+          <div className="mt-12 flex justify-center">
+            <a
+              href={`${profile.github}?tab=repositories`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg bg-brand-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-500/25 transition-all hover:-translate-y-0.5 hover:bg-brand-600"
+            >
+              View All Projects
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

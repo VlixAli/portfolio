@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from "next/font/google";
+import { Manrope } from "next/font/google";
 import { profile, siteUrl } from "@/lib/data";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const robotoMono = Roboto_Mono({
-  variable: "--font-roboto-mono",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -45,18 +40,10 @@ export const metadata: Metadata = {
   },
 };
 
-const splashScript =
-  '(function(){try{var m=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(m||sessionStorage.getItem("splash-seen")){document.documentElement.setAttribute("data-splash","off")}}catch(e){}})()';
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${robotoMono.variable} dark scroll-smooth`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${manrope.variable} scroll-smooth`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: splashScript }} />
         <noscript>
           <style>{`.reveal{opacity:1 !important}`}</style>
         </noscript>

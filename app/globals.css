@@ -1,14 +1,23 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
-  --background: #000000;
-  --foreground: #f5f5f7;
-  --muted: #86868b;
-  --surface: #1d1d1f;
-  --line: rgba(255, 255, 255, 0.12);
-  --accent: #5eead4;
+  --background: #ffffff;
+  --foreground: #18181b;
+  --muted: #52525b;
+  --surface: #ffffff;
+  --line: rgba(24, 24, 27, 0.08);
+  --accent: #23cd63;
+
+  /* Green brand scale */
+  --brand-50: #eefcf3;
+  --brand-100: #d3f8e1;
+  --brand-200: #a3efc0;
+  --brand-300: #6be699;
+  --brand-400: #34d399;
+  --brand-500: #23cd63;
+  --brand-600: #157c3c;
+  --brand-700: #10602e;
+  --brand-800: #0d4a24;
 }
 
 @theme inline {
@@ -18,56 +27,49 @@
   --color-surface: var(--surface);
   --color-line: var(--line);
   --color-accent: var(--accent);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-roboto-mono);
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --font-sans: var(--font-manrope);
 }
 
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #2a2a2c #000000;
-}
-
-html[data-splash="off"] .splash-overlay {
-  display: none;
+  scrollbar-color: #c4c4c8 #ffffff;
 }
 
 body {
-  background-color: #000000;
-  color: #f5f5f7;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(94, 234, 212, 0.06), transparent 70%),
-    radial-gradient(ellipse 60% 45% at 88% 108%, rgba(94, 234, 212, 0.04), transparent 70%);
+  background-color: #ffffff;
+  color: #18181b;
 }
 
 ::selection {
-  background: rgba(94, 234, 212, 0.22);
-  color: #f5f5f7;
+  background: rgba(35, 205, 99, 0.25);
+  color: #10602e;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #f4f4f5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2c;
-  border-radius: 4px;
+  background: #c4c4c8;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a3a3c;
+  background: #a1a1aa;
 }
 
 :focus-visible {
@@ -75,82 +77,10 @@ body::before {
   outline-offset: 3px;
 }
 
-@keyframes splash-title {
-  0% {
-    letter-spacing: 0.3em;
-    opacity: 0;
-  }
-  60% {
-    opacity: 1;
-  }
-  100% {
-    letter-spacing: 0.02em;
-    opacity: 1;
-  }
-}
-
-@keyframes fade-left {
-  0% {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  35% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes fade-right {
-  0% {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-  35% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes glow {
-  0%, 100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
 @keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -167,26 +97,6 @@ body::before {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.animate-splash-title {
-  animation: splash-title 1s ease-out forwards;
-}
-
-.animate-fade-left {
-  animation: fade-left 1s ease-in-out forwards;
-}
-
-.animate-fade-right {
-  animation: fade-right 1s ease-in-out forwards;
-}
-
-.animate-fade-in {
-  animation: fade-in 1s ease-in-out forwards;
-}
-
-.animate-glow {
-  animation: glow 4s ease-in-out infinite;
 }
 
 .reveal {
@@ -212,11 +122,6 @@ body::before {
   }
 
   .reveal.is-visible,
-  .animate-splash-title,
-  .animate-fade-left,
-  .animate-fade-right,
-  .animate-fade-in,
-  .animate-glow,
   .animate-menu-item {
     animation: none;
   }
