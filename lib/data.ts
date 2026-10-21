@@ -22,7 +22,7 @@ export type SkillGroup = {
   items: string[];
 };
 
-export const siteUrl = "https://ali-eldiasty-portfolio.vercel.app";
+export const siteUrl = "https://ali-eldiasty.vercel.app";
 
 export const profile = {
   name: "Ali Eldiasty",
